@@ -1,16 +1,12 @@
 # -*- coding: utf-8 -*-
 
 
+__author__ = 'karidon'
+__email__ = 'Genek_x@mail.ru'
+__date__ = '2016-03-21'
 
-'''
+from datetime import datetime
 
-- Выбираем разницу во временя и делаем обратный отчет
-'''
-
-
-
-from datetime import date, datetime
-import time
 
 def considers_time_difference():
 	'''
@@ -19,10 +15,10 @@ def considers_time_difference():
 	'''
 	set_time_now = datetime.now()
 	# TODO: тестовый вариант для отладки
-	if set_time_now.weekday() == 1:
+	if set_time_now.weekday() == 4:
 		_time = set_time_now.replace(hour=16, minute=45, second=0)
 	else:
-		_time = set_time_now.replace(hour=23, minute=0, second=0)
+		_time = set_time_now.replace(hour=18, minute=0, second=0)
 
 	res = _time - set_time_now
 	if _time < set_time_now:
@@ -30,11 +26,18 @@ def considers_time_difference():
 	return res
 
 
-
-
-
+def name_day():
+	'''
+	Return name day
+	:return: str
+	'''
+	set_data = datetime.now()
+	_day = {0: 'Понедельник', 1: 'Вторник', 2: 'Среда',
+	        3: 'Четврег', 4: 'Пятница', 5: 'Суббота', 6: 'Воскресенье'}
+	for k in _day.keys():
+		if set_data.weekday() == k:
+			return _day[k]
 
 
 if __name__ == '__main__':
-	print(considers_time_difference())
-
+	print(name_day())
