@@ -60,18 +60,18 @@ if __name__ == '__main__':
 	              window_deleted)  # обработчик закрытия окна
 
 	label = tk.Label(root, text='До окончания рабочего дня:', font='arial 16')
-	label.place(x=100, y=10)
+	label.pack(side='top')
 
-	label2 = tk.Label(root, font='sans 72')  # размер шрифта таймера
-	label2.place(x=50, y=50)
+	label2 = tk.Label(root, font='sans 72', fg='#8ffe09')  # размер шрифта таймера
+	label2.pack(expand=True)
 	label2.after_idle(tick)
 
-	label3 = tk.Label(root, font='arial 16')
-	label3.place(x=200, y=200)
+	label3 = tk.Label(root, font='arial 14')
+	label3.pack(side='bottom')
 	label3.after_idle(display_day)
 
 	label4 = tk.Label(root, font='arial 14')
-	label4.place(x=200, y=300)
+	label4.pack(side='bottom')
 	label4.after_idle(display_data)
 
 	root.mainloop()
