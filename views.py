@@ -2,7 +2,6 @@
 
 
 # TODO 1: отдельно тесты написать
-# TODO 2: подправить окно
 # TODO 3: подумать как можно запускать при вкл компа
 # TODO 4: упоковать в установщик
 
@@ -59,19 +58,32 @@ if __name__ == '__main__':
 	root.protocol('WM_DELETE_WINDOW',
 	              window_deleted)  # обработчик закрытия окна
 
-	label = tk.Label(root, text='До окончания рабочего дня:', font='arial 16')
-	label.pack(side='top')
+	fra1 = tk.Frame(root, width=500, height=500)
+	fra1.pack(side='top')
 
-	label2 = tk.Label(root, font='sans 72', fg='#8ffe09')  # размер шрифта таймера
-	label2.pack(expand=True)
+	fra2 = tk.Frame(root, width=500, height=500)
+	fra2.pack(expand=True)
+
+	fra3 = tk.Frame(root, width=500, height=500)
+	fra3.pack(side='bottom')
+
+	fra4 = tk.Frame(root, width=500, height=500)
+	fra4.pack(side='bottom')
+
+	label = tk.Label(fra1, text='До окончания рабочего дня:', font='arial 16')
+	label.pack()
+
+	label2 = tk.Label(fra2, font='sans 72',
+	                  fg='#8ffe09')  # размер шрифта таймера
+	label2.pack()
 	label2.after_idle(tick)
 
-	label3 = tk.Label(root, font='arial 14')
-	label3.pack(side='bottom')
+	label3 = tk.Label(fra3, font='arial 14')
+	label3.pack()
 	label3.after_idle(display_day)
 
-	label4 = tk.Label(root, font='arial 14')
-	label4.pack(side='bottom')
+	label4 = tk.Label(fra4, font='arial 14')
+	label4.pack()
 	label4.after_idle(display_data)
 
 	root.mainloop()
