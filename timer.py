@@ -24,14 +24,14 @@ class Timer(object):
 		Разница во времени
 		:return: class 'datetime.timedelta' или str
 		'''
-		time_now = self.set_data()
-		if time_now.weekday() == 4:
-			_time = time_now.replace(hour=16, minute=45, second=0)
+		data_now = self.set_data()
+		if data_now.weekday() == 4:
+			_time = data_now.replace(hour=16, minute=45, second=0)
 		else:
-			_time = time_now.replace(hour=18, minute=0, second=0)
+			_time = data_now.replace(hour=23, minute=0, second=0)
 
-		res = _time - time_now
-		if _time < time_now:
+		res = _time - data_now
+		if _time < data_now:
 			res = 'The End!!!'
 		return res
 
@@ -52,7 +52,14 @@ class Timer(object):
 		Return data
 		:return: class 'datetime.date'
 		'''
-		return self._data_now.date()
+		_year = self._data_now.year
+		_month = self._data_now.month
+		_day = self._data_now.day
+
+		if _month < 10:
+			zero = 0    # добовляет ноль перед цифрами месяца
+
+		return '{0}-{1}{2}-{3}'.format(_day, zero, _month, _year)
 
 
 if __name__ == '__main__':
