@@ -28,7 +28,7 @@ class Timer(object):
 		if data_now.weekday() == 4:
 			_time = data_now.replace(hour=16, minute=45, second=0)
 		else:
-			_time = data_now.replace(hour=23, minute=0, second=0)
+			_time = data_now.replace(hour=18, minute=0, second=0)
 
 		res = _time - data_now
 		if _time < data_now:
@@ -56,8 +56,9 @@ class Timer(object):
 		_month = self._data_now.month
 		_day = self._data_now.day
 
-		if _month < 10:
-			zero = 0    # добовляет ноль перед цифрами месяца
+		zero = 0     # добовляет ноль перед цифрами месяца
+		if _month > 10:
+			zero = ''
 
 		return '{0}-{1}{2}-{3}'.format(_day, zero, _month, _year)
 
