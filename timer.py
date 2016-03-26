@@ -30,6 +30,10 @@ class Timer(object):
 		data_now = self.set_data()
 		if data_now.weekday() == 4:
 			_time = data_now.replace(hour=16, minute=45, second=0)
+
+		elif data_now.weekday() == 5 or data_now.weekday() == 6:
+			res = 'Weekend!'
+			return res
 		else:
 			_time = data_now.replace(hour=18, minute=0, second=0)
 
