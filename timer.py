@@ -1,12 +1,10 @@
 # -*- coding: utf-8 -*-
 
+"""Основное окно обработки времени"""
 
 __author__ = 'karidon'
 __email__ = 'Genek_x@mail.ru'
-__date__ = '2016-03-21'
-
-import os
-
+__date__ = '2016-03-26'
 
 from datetime import datetime
 
@@ -27,19 +25,22 @@ class Timer(object):
 		Разница во времени
 		:return: class 'datetime.timedelta' или str
 		'''
-		data_now = self.set_data()
-		if data_now.weekday() == 4:
-			_time = data_now.replace(hour=16, minute=45, second=0)
+		FRIDAY = 4  # пятница
+		SATURDAY = 5  # суббота
+		SUNDAY = 6  # воскресенье
 
-		elif data_now.weekday() == 5 or data_now.weekday() == 6:
+		data_now = self.set_data()
+		if data_now.weekday() == FRIDAY:
+			time = data_now.replace(hour=16, minute=45, second=0)
+		elif data_now.weekday() == SATURDAY or data_now.weekday() == SUNDAY:
 			res = 'Weekend!'
 			return res
 		else:
-			_time = data_now.replace(hour=18, minute=0, second=0)
+			time = data_now.replace(hour=18, minute=0, second=0)
 
-		res = _time - data_now
-		if _time < data_now:
-			res = ''
+		res = time - data_now
+		if time < data_now:
+			res = 'The End!'
 		return res
 
 	def name_day(self):
