@@ -6,6 +6,7 @@ __author__ = 'karidon'
 __email__ = 'Genek_x@mail.ru'
 __date__ = '2016-03-26'
 
+import re
 from datetime import datetime
 
 
@@ -50,7 +51,7 @@ class Timer(object):
 		'''
 		data_now = self._data_now
 		_day = {0: 'Понедельник', 1: 'Вторник', 2: 'Среда',
-		        3: 'Четврег', 4: 'Пятница', 5: 'Суббота', 6: 'Воскресенье'}
+				3: 'Четврег', 4: 'Пятница', 5: 'Суббота', 6: 'Воскресенье'}
 		for k in _day.keys():
 			if data_now.weekday() == k:
 				return _day[k]

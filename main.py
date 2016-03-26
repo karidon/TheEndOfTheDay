@@ -3,6 +3,7 @@
 """Главное окно виджетов"""
 
 import tkinter as tk
+import re
 
 from timer import Timer
 
@@ -133,7 +134,7 @@ if __name__ == '__main__':
 	root.title('Таймер')  # название окна
 	root.geometry('500x400+300+200')  # размерм окна
 	root.protocol('WM_DELETE_WINDOW',
-	              window_deleted)  # обработчик закрытия окна
+				  window_deleted)  # обработчик закрытия окна
 
 	app_top = ApplicationTop(master=root)
 	app_expand = ApplicationExpand(master=root)
