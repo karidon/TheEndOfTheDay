@@ -49,6 +49,9 @@ def window_deleted():
 
 
 if __name__ == '__main__':
+
+
+
 	timer = Timer()
 
 	root = tk.Tk()
@@ -58,16 +61,16 @@ if __name__ == '__main__':
 	root.protocol('WM_DELETE_WINDOW',
 	              window_deleted)  # обработчик закрытия окна
 
-	fra1 = tk.Frame(root, width=500, height=500)
+	fra1 = tk.Frame(root)
 	fra1.pack(side='top')
 
-	fra2 = tk.Frame(root, width=500, height=500)
+	fra2 = tk.Frame(root)
 	fra2.pack(expand=True)
 
-	fra3 = tk.Frame(root, width=500, height=500)
+	fra3 = tk.Frame(root)
 	fra3.pack(side='bottom')
 
-	fra4 = tk.Frame(root, width=500, height=500)
+	fra4 = tk.Frame(root)
 	fra4.pack(side='bottom')
 
 	label = tk.Label(fra1, text='До окончания рабочего дня:', font='arial 16')

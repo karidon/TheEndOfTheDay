@@ -5,6 +5,9 @@ __author__ = 'karidon'
 __email__ = 'Genek_x@mail.ru'
 __date__ = '2016-03-21'
 
+import os
+
+
 from datetime import datetime
 
 
@@ -32,7 +35,7 @@ class Timer(object):
 
 		res = _time - data_now
 		if _time < data_now:
-			res = 'The End!!!'
+			res = ''
 		return res
 
 	def name_day(self):
@@ -56,7 +59,7 @@ class Timer(object):
 		_month = self._data_now.month
 		_day = self._data_now.day
 
-		zero = 0     # добовляет ноль перед цифрами месяца
+		zero = 0  # добовляет ноль перед цифрами месяца
 		if _month > 10:
 			zero = ''
 
