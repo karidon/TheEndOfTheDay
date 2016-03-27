@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 
 """Основное окно обработки времени"""
 
@@ -8,6 +9,7 @@ __date__ = '2016-03-26'
 
 import re
 from datetime import datetime
+
 
 
 class Timer(object):

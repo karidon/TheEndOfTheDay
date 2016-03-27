@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 
 __author__ = 'karidon'
 __email__ = 'Genek_x@mail.ru'
@@ -20,4 +21,5 @@ setup(name="TheEndOfTheDay",
 	  version="0.1",
 	  description="Return time",
 	  options={"build_exe": build_exe_options},
-	  executables=[Executable("main.py", base=base)])
+	  executables=[Executable(script="main.py", base=base)])
+	#  executables=[Executable(script="main.py", icon='pict.ico', base=base)])
