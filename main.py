@@ -10,7 +10,7 @@ from timer import Timer
 
 __author__ = 'karidon'
 __email__ = 'Genek_x@mail.ru'
-__date__ = '2016-03-26'
+__date__ = '2016-03-27'
 
 
 class ApplicationTop(tk.Frame):
@@ -53,7 +53,7 @@ class ApplicationExpand(tk.Frame):
 		:return: str
 		'''
 		self.tmp = self.label.after(200, self.tick)
-		self.label['text'] = timer.considers_time_difference()
+		self.label['text'] = Timer.considers_time_difference(self)
 
 	# для смайла
 	# if self.label['text'] == '':
@@ -93,7 +93,7 @@ class ApplicationBottom(tk.Frame):
 		Shows the name of the day.
 		:return: str
 		'''
-		self.label['text'] = timer.name_day()
+		self.label['text'] = Timer.name_day(self)
 
 
 class ApplicationBottomDown(tk.Frame):
@@ -117,7 +117,7 @@ class ApplicationBottomDown(tk.Frame):
 		Shows the data.
 		:return: str
 		'''
-		self.label['text'] = timer.get_data()
+		self.label['text'] = Timer.get_data(self)
 
 
 def window_deleted():
@@ -126,6 +126,7 @@ def window_deleted():
 	:return:
 	'''
 	print('Окно закрыто')
+	#TODO 1: замениьь root
 	root.quit()
 
 

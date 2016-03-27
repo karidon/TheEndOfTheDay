@@ -22,4 +22,4 @@ setup(name="TheEndOfTheDay",
 	  description="Return time",
 	  options={"build_exe": build_exe_options},
 	  executables=[Executable(script="main.py", base=base)])
-	#  executables=[Executable(script="main.py", icon='pict.ico', base=base)])
+

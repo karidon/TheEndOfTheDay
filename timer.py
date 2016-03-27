@@ -5,23 +5,15 @@ from __future__ import unicode_literals
 
 __author__ = 'karidon'
 __email__ = 'Genek_x@mail.ru'
-__date__ = '2016-03-26'
+__date__ = '2016-03-27'
 
 import re
 from datetime import datetime
 
 
-
 class Timer(object):
 	"""Таймер"""
-
-	def set_data(self):
-		'''
-		Создаем дату
-		:return: class 'datetime.timedelta'
-		'''
-		self._data_now = datetime.now()
-		return self._data_now
+	_data_now_static = datetime.now()	# статическое время
 
 	def considers_time_difference(self):
 		'''
@@ -31,18 +23,18 @@ class Timer(object):
 		FRIDAY = 4  # пятница
 		SATURDAY = 5  # суббота
 		SUNDAY = 6  # воскресенье
-
-		data_now = self.set_data()
-		if data_now.weekday() == FRIDAY:
-			time = data_now.replace(hour=16, minute=45, second=0)
-		elif data_now.weekday() == SATURDAY or data_now.weekday() == SUNDAY:
-			res = 'Weekend!'
-			return res
+		self.data_now = datetime.now()	# время в даный момент
+		if self.data_now.weekday() == FRIDAY:
+			time = self.data_now.replace(hour=16, minute=45, second=0)
+		# TODO 1: выключена для отладки
+		# elif self.data_now.weekday() == SATURDAY or self.data_now.weekday() == SUNDAY:
+		#	res = 'Weekend!'
+		#	return res
 		else:
-			time = data_now.replace(hour=18, minute=0, second=0)
+			time = self.data_now.replace(hour=18, minute=0, second=0)
 
-		res = time - data_now
-		if time < data_now:
+		res = time - self.data_now
+		if time < self.data_now:
 			res = 'The End!'
 		return res
 
@@ -51,11 +43,10 @@ class Timer(object):
 		Return name day
 		:return: str
 		'''
-		data_now = self._data_now
 		_day = {0: 'Понедельник', 1: 'Вторник', 2: 'Среда',
 				3: 'Четврег', 4: 'Пятница', 5: 'Суббота', 6: 'Воскресенье'}
 		for k in _day.keys():
-			if data_now.weekday() == k:
+			if Timer._data_now_static.weekday() == k:
 				return _day[k]
 
 	def get_data(self):
@@ -63,15 +54,15 @@ class Timer(object):
 		Return data
 		:return: class 'datetime.date'
 		'''
-		_year = self._data_now.year
-		_month = self._data_now.month
-		_day = self._data_now.day
+		year = Timer._data_now_static.year
+		month = Timer._data_now_static.month
+		day = Timer._data_now_static.day
 
 		zero = 0  # добовляет ноль перед цифрами месяца
-		if _month > 10:
+		if month > 10:
 			zero = ''
 
-		return '{0}-{1}{2}-{3}'.format(_day, zero, _month, _year)
+		return '{0}-{1}{2}-{3}'.format(day, zero, month, year)
 
 
 if __name__ == '__main__':
