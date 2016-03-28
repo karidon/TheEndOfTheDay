@@ -19,7 +19,7 @@ if sys.platform == "win32":
 
 setup(name="TheEndOfTheDay",
 	  version="0.1",
-	  description="Return time",
+	  description="War so its like copsr",
 	  options={"build_exe": build_exe_options},
 	  executables=[Executable(script="main.py", base=base)])
 

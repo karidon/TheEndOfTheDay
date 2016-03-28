@@ -13,7 +13,7 @@ from datetime import datetime
 
 class Timer(object):
 	"""Таймер"""
-	_data_now_static = datetime.now()	# статическое время
+	_data_now_static = datetime.now()  # статическое время
 
 	def considers_time_difference(self):
 		'''
@@ -23,17 +23,19 @@ class Timer(object):
 		FRIDAY = 4  # пятница
 		SATURDAY = 5  # суббота
 		SUNDAY = 6  # воскресенье
-		self.data_now = datetime.now()	# время в даный момент
+
+		self.data_now = datetime.now()  # время в даный момент
+
 		if self.data_now.weekday() == FRIDAY:
 			time = self.data_now.replace(hour=16, minute=45, second=0)
-		# TODO 1: выключена для отладки
-		# elif self.data_now.weekday() == SATURDAY or self.data_now.weekday() == SUNDAY:
-		#	res = 'Weekend!'
-		#	return res
+		elif self.data_now.weekday() == SATURDAY or self.data_now.weekday() == SUNDAY:
+			res = 'Weekend!'
+			return res
 		else:
 			time = self.data_now.replace(hour=18, minute=0, second=0)
 
-		res = time - self.data_now
+		res = time - self.data_now	# остаток времени
+
 		if time < self.data_now:
 			res = 'The End!'
 		return res
