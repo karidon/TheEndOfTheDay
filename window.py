@@ -27,6 +27,7 @@ class Window(tk.Tk):
 	def __init__(self, master=None):
 		super().__init__(master)
 		self.title('Таймер')  # название окна
+		self.iconbitmap('icons/icon.ico')	# иконка в title баре
 		self.geometry('500x400+300+200')  # размерм окна
 		self.protocol('WM_DELETE_WINDOW', self.window_close)  # обработчик закрытия окна
 
@@ -75,7 +76,7 @@ class ApplicationExpand(tk.Frame):
 
 	def smile_view(self):
 		'''Return smile'''
-		# TODO: Нужно вернуть смайл
+		# TODO: Нужно вернуть смайл заместо текста
 		pass
 
 
