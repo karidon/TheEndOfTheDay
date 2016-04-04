@@ -1,2 +1,2 @@
-cx-Freeze==4.3.4
-wheel==0.29.0
+PyInstaller==3.1.1
+pypiwin32==219

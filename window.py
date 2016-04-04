@@ -5,7 +5,7 @@ from __future__ import unicode_literals
 
 __author__ = 'karidon'
 __email__ = 'Genek_x@mail.ru'
-__date__ = '2016-03-27'
+__date__ = '2016-04-04'
 
 import tkinter as tk
 import re
@@ -27,7 +27,7 @@ class Window(tk.Tk):
 	def __init__(self, master=None):
 		super().__init__(master)
 		self.title('Таймер')  # название окна
-		self.iconbitmap('icons/icon.ico')	# иконка в title баре
+		self.iconbitmap('images/icon.ico')	# иконка в title баре
 		self.geometry('500x400+300+200')  # размерм окна
 		self.protocol('WM_DELETE_WINDOW', self.window_close)  # обработчик закрытия окна
 
