@@ -27,10 +27,17 @@ class Window(tk.Tk):
 	def __init__(self, master=None):
 		super().__init__(master)
 		self.title('Таймер')  # название окна
-		self.iconbitmap('images/icon.ico')	# иконка в title баре
+
+		# TODO 1: Сделать на весь экран
+		# TODO 2: Весь экран должен сворачиваться по клику мышки
+		# TODO 3: При бездействия разварачиваться
+		try:
+			self.iconbitmap('images/icon.ico')	# иконка в title баре
+		except tk.TclError:
+			pass
+
 		self.geometry('500x400+300+200')  # размерм окна
 		self.protocol('WM_DELETE_WINDOW', self.window_close)  # обработчик закрытия окна
-
 
 class ApplicationTop(tk.Frame):
 	"""Top Frame and Label Top"""
@@ -76,7 +83,7 @@ class ApplicationExpand(tk.Frame):
 
 	def smile_view(self):
 		'''Return smile'''
-		# TODO: Нужно вернуть смайл заместо текста
+		# TODO 4: Нужно вернуть смайл заместо текста
 		pass
 
 
