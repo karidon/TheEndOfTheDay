@@ -8,13 +8,15 @@ __email__ = 'Genek_x@mail.ru'
 __date__ = '2016-04-04'
 
 import tkinter as tk
-import re
+
+from sys import platform
 
 from timer import Timer
 
 
 class Window(tk.Tk):
 	"""Отображает Главное окно"""
+
 	def window_close(self):
 		'''
 		Обрабатывает заыкытие окна
@@ -32,12 +34,19 @@ class Window(tk.Tk):
 		# TODO 2: Весь экран должен сворачиваться по клику мышки
 		# TODO 3: При бездействия разварачиваться
 		try:
-			self.iconbitmap('images/icon.ico')	# иконка в title баре
-		except tk.TclError:
+			self.iconbitmap('images/icon.ico')  # иконка в title баре
+		except tk.TclError:	# Если нет иконки
 			pass
 
-		self.geometry('500x400+300+200')  # размерм окна
+		if platform.startswith('linux'):
+			self.geometry('500x400+300+200')  # размерм окна
+		else:
+			self.state('zoomed')
+			self.geometry('500x400+300+200')  # размерм окна
+
+
 		self.protocol('WM_DELETE_WINDOW', self.window_close)  # обработчик закрытия окна
+
 
 class ApplicationTop(tk.Frame):
 	"""Top Frame and Label Top"""
@@ -64,13 +73,12 @@ class ApplicationExpand(tk.Frame):
 		self.pack(expand=True)
 		self.createWidgets()
 
-	def createWidgets(self):
+	def createWidgets(self, font='arial 72'):
 		''' Label Expand '''
 		self.label = tk.Label(self)
-		self.label['font'] = 'arial 72'
+		self.label['font'] = font
 		self.label['fg'] = '#8ffe09'
 		self.label.pack()
-		# self.tmp = None   # для смайла
 		self.label.after_idle(self.tick)
 
 	def tick(self):
@@ -137,12 +145,6 @@ class ApplicationBottomDown(tk.Frame):
 
 if __name__ == '__main__':
 	root = Window()
-	#	root = tk.Tk()
-	#	root.title('Таймер')  # название окна
-	#	root.geometry('500x400+300+200')  # размерм окна
-	#	root.protocol('WM_DELETE_WINDOW',
-	#				  window_close)  # обработчик закрытия окна
-
 	app_top = ApplicationTop(master=root)
 	app_expand = ApplicationExpand(master=root)
 	app_bottom = ApplicationBottom(master=root)

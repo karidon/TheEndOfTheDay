@@ -7,10 +7,10 @@ __author__ = 'karidon'
 __email__ = 'Genek_x@mail.ru'
 __date__ = '2016-04-04'
 
-import re
 from datetime import datetime
 
-
+# TODO 1: Остаток времения сделать маргающим
+# TODO 2: Когда закончилось время подать звуковой сигнали или выключить компьютор
 class Timer(object):
 	"""Таймер"""
 	_data_now_static = datetime.now()  # статическое время
@@ -34,10 +34,11 @@ class Timer(object):
 		else:
 			time = self.data_now.replace(hour=18, minute=0, second=0)
 
-		res = time - self.data_now	# остаток времени
+		res = time - self.data_now  # остаток времени
 
 		if time < self.data_now:
 			res = 'The End!'
+
 		return res
 
 	def name_day(self):
