@@ -8,9 +8,7 @@ __email__ = 'Genek_x@mail.ru'
 __date__ = '2016-04-04'
 
 import tkinter as tk
-
 from sys import platform
-
 from timer import Timer
 
 
@@ -31,7 +29,7 @@ class Window(tk.Tk):
 		self.title('Таймер')  # название окна
 		try:
 			self.iconbitmap('images/icon.ico')  # иконка в title баре
-		except tk.TclError:	# Если нет иконки
+		except tk.TclError:  # Если нет иконки
 			pass
 
 		if platform.startswith('linux'):
@@ -39,7 +37,6 @@ class Window(tk.Tk):
 		else:
 			self.state('zoomed')
 			self.geometry('500x400+300+200')  # размерм окна
-
 
 		self.protocol('WM_DELETE_WINDOW', self.window_close)  # обработчик закрытия окна
 
@@ -55,10 +52,10 @@ class ApplicationTop(tk.Frame):
 	def createWidgets(self):
 		''' Label Top '''
 		self.label = tk.Label(self)
-		self.label['font'] = 'arial 16'
+		self.label['font'] = 'arial 18'
 		self.label['fg'] = 'black'
 		self.label['text'] = 'До окончания рабочего дня:'
-		self.label.pack(side='bottom')
+		self.label.pack()
 
 
 class ApplicationExpand(tk.Frame):
@@ -91,6 +88,30 @@ class ApplicationExpand(tk.Frame):
 		pass
 
 
+class ApplicationDownClock(tk.Frame):
+	"""Top Frame and Label Top"""
+
+	def __init__(self, master=None):
+		super().__init__(master)
+		self.pack(side='top')
+		self.createWidgets()
+
+	def createWidgets(self):
+		''' Label Bottom '''
+		self.label = tk.Label(self)
+		self.label['font'] = 'sans 48'
+		self.label['fg'] = 'black'
+		self.label.pack()
+		self.label.after_idle(self.clock)
+
+	def clock(self):
+		'''
+		Return clock
+		'''
+		self.tmp = self.label.after(200, self.clock)
+		self.label['text'] = Timer.set_clock(self)
+
+
 class ApplicationBottom(tk.Frame):
 	"""Frame Bottom and Label Bottom"""
 
@@ -102,7 +123,7 @@ class ApplicationBottom(tk.Frame):
 	def createWidgets(self):
 		'''Label Bottom'''
 		self.label = tk.Label(self)
-		self.label['font'] = 'arial 14'
+		self.label['font'] = 'arial 18'
 		self.label['fg'] = 'black'
 		self.label.pack()
 		self.label.after_idle(self.display_day)
@@ -126,7 +147,7 @@ class ApplicationBottomDown(tk.Frame):
 	def createWidgets(self):
 		'''Label Down'''
 		self.label = tk.Label(self)
-		self.label['font'] = 'arial 14'
+		self.label['font'] = 'arial 18'
 		self.label['fg'] = 'black'
 		self.label.pack()
 		self.label.after_idle(self.display_data)
@@ -143,6 +164,7 @@ if __name__ == '__main__':
 	root = Window()
 	app_top = ApplicationTop(master=root)
 	app_expand = ApplicationExpand(master=root)
+	app_top_right = ApplicationDownClock(master=root)
 	app_bottom = ApplicationBottom(master=root)
 	app_bottom_down = ApplicationBottomDown(master=root)
 

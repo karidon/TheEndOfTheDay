@@ -8,6 +8,7 @@ __email__ = 'Genek_x@mail.ru'
 __date__ = '2016-04-04'
 
 from datetime import datetime
+import time
 
 
 # TODO 1: Остаток времения сделать маргающим
@@ -80,9 +81,18 @@ class Timer(object):
 		return '{0}-{1}{2}-{3}'.format(day, zero, month, year)
 
 
+	def set_clock(self):
+		'''
+		Возвращает now time
+		:return: time
+		'''
+		return time.strftime('%H:%M:%S')
+
+
 if __name__ == '__main__':
 	timer_test = Timer()
 	print(timer_test.considers_time_difference())
 	print(timer_test.name_day())
 	print(timer_test.get_data())
+	print(timer_test.set_clock())
 	print('Ok')
