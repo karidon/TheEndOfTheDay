@@ -29,10 +29,6 @@ class Window(tk.Tk):
 	def __init__(self, master=None):
 		super().__init__(master)
 		self.title('Таймер')  # название окна
-
-		# TODO 1: Сделать на весь экран
-		# TODO 2: Весь экран должен сворачиваться по клику мышки
-		# TODO 3: При бездействия разварачиваться
 		try:
 			self.iconbitmap('images/icon.ico')  # иконка в title баре
 		except tk.TclError:	# Если нет иконки

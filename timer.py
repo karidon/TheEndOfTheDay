@@ -9,10 +9,12 @@ __date__ = '2016-04-04'
 
 from datetime import datetime
 
+
 # TODO 1: Остаток времения сделать маргающим
 # TODO 2: Когда закончилось время подать звуковой сигнали или выключить компьютор
 class Timer(object):
 	"""Таймер"""
+
 	_data_now_static = datetime.now()  # статическое время
 
 	def considers_time_difference(self):
@@ -20,26 +22,36 @@ class Timer(object):
 		Разница во времени
 		:return: class 'datetime.timedelta' или str
 		'''
+		self.data_now = datetime.now()  # время в даный момент
+
+		time = Timer.set_time_work_days(self)  # устанавливаем рабочее время
+
+		if isinstance(time, str):
+			res = time
+		else:
+			res = time - self.data_now  # остаток времени
+			if time < self.data_now:
+				res = 'The End!'
+
+		return res
+
+	def set_time_work_days(self):
+		'''
+		Возвращает время рабочего дня или выходной
+		:return: str or class 'datetime'
+		'''
 		FRIDAY = 4  # пятница
 		SATURDAY = 5  # суббота
 		SUNDAY = 6  # воскресенье
 
-		self.data_now = datetime.now()  # время в даный момент
-
 		if self.data_now.weekday() == FRIDAY:
 			time = self.data_now.replace(hour=16, minute=45, second=0)
 		elif self.data_now.weekday() == SATURDAY or self.data_now.weekday() == SUNDAY:
-			res = 'Weekend!'
-			return res
+			time = 'Weekend!'
 		else:
 			time = self.data_now.replace(hour=18, minute=0, second=0)
 
-		res = time - self.data_now  # остаток времени
-
-		if time < self.data_now:
-			res = 'The End!'
-
-		return res
+		return time
 
 	def name_day(self):
 		'''
